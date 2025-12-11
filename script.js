@@ -1,6 +1,4 @@
-// Data for the quote generator (now with 47 iconic quotes)
-const movieQuotes = [
-    // --- ORIGINAL SELECTION (7 Quotes) ---
+
     { quote: "May the Force be with you.", author: "Star Wars: A New Hope" },
     { quote: "I'm going to make him an offer he can't refuse.", author: "The Godfather" },
     { quote: "You can't handle the truth!", author: "A Few Good Men" },
@@ -9,7 +7,7 @@ const movieQuotes = [
     { quote: "Bond. James Bond.", author: "Dr. No" },
     { quote: "Life is like a box of chocolates.", author: "Forrest Gump" },
     
-    // --- 10 PREVIOUSLY ADDED QUOTES ---
+    
     { quote: "Look at me! I'm not making minimum wage, here!", author: "The Devil's Advocate" },
     { quote: "The world is yours.", author: "Scarface" },
     { quote: "The fire rises.", author: "The Dark Knight Rises" },
@@ -21,7 +19,7 @@ const movieQuotes = [
     { quote: "Say hello to my little friend!", author: "Scarface" },
     { quote: "It's not who I am underneath, but what I do that defines me.", author: "Batman Begins" },
 
-    // --- 30 NEW QUOTES ---
+    
     { quote: "Houston, we have a problem.", author: "Apollo 13" },
     { quote: "Here's Johnny!", author: "The Shining" },
     { quote: "Nobody puts Baby in a corner.", author: "Dirty Dancing" },
@@ -53,8 +51,7 @@ const movieQuotes = [
     { quote: "I am your father.", author: "Star Wars: The Empire Strikes Back" },
     { quote: "The first rule of Fight Club is: You do not talk about Fight Club.", author: "Fight Club" }
 ];
-
-// Map the dropdown value to the actual image URL and overlay style
+
 const backgroundOptions = {
     none: { url: 'none', overlay: 'none' },
     pacino: { url: 'al-pacino.jpg', overlay: 'dark' }, 
@@ -62,15 +59,15 @@ const backgroundOptions = {
     city: { url: 'night-city.jpg', overlay: 'dark' }
 };
 
-// Get references to HTML elements
+
 const quoteText = document.getElementById('quote-text');
 const quoteAuthor = document.getElementById('quote-author');
 const newQuoteBtn = document.getElementById('new-quote-btn');
 const bgSelect = document.getElementById('bg-select');
 
-// --- Quote Logic ---
+
 function displayNewQuote() {
-    // Generate a random index number based on the expanded length of the array
+    
     const randomIndex = Math.floor(Math.random() * movieQuotes.length);
     const randomQuote = movieQuotes[randomIndex];
     quoteText.textContent = randomQuote.quote;
@@ -79,29 +76,28 @@ function displayNewQuote() {
 newQuoteBtn.addEventListener('click', displayNewQuote);
 displayNewQuote();
 
-
-// --- Background Logic ---
+
 function changeBackground() {
     const selectedValue = bgSelect.value;
     const option = backgroundOptions[selectedValue];
     const body = document.body;
 
     if (option.url === 'none') {
-        // Clear all background images and overlays
+       
         body.style.backgroundImage = 'none';
         body.style.backgroundColor = '#f0f0f0'; 
         body.className = ''; 
     } else {
-        // Set the background image
+        
         body.style.backgroundImage = `url('${option.url}')`;
         body.style.backgroundColor = 'transparent'; 
         
-        // Add a class for image properties and the dark overlay
+       
         body.className = option.overlay; 
     }
 }
 
-// Listen for a change on the dropdown menu
+
 if (bgSelect) {
     bgSelect.addEventListener('change', changeBackground);
 }
